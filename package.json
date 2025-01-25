@@ -1,0 +1,29 @@
+{
+  "name": "oclif-test",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@oclif/core": "^4.2.4"
+  },
+  "bin": {
+    "cli-test": "./bin/run.js"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.74",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.3.3"
+  },
+  "oclif": {
+    "bin": "cli-test",
+    "commands": "./dist/commands",
+    "dirname": "cli-test",
+    "topicSeparator": " "
+  }
+}

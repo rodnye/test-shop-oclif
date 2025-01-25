@@ -1,0 +1,6 @@
+{
+  "bin": "cli-test",
+  "commands": "./dist/commands",
+  "dirname": "cli-test",
+  "topicSeparator": " "
+}
