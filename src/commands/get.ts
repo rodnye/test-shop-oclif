@@ -1,5 +1,6 @@
 import { Args, Command, Flags } from '@oclif/core'
-import { connectDatabase, getProducts, getSectionsNames } from '../controllers/database.js'
+import { connectDatabase } from '../controllers/database.js'
+import { getProducts, getSectionsNames } from "../controllers/product.js"
 import { intro, log, outro, select, selectKey } from '@clack/prompts'
 import { parseWord } from '../utils/parse.js'
 
@@ -44,7 +45,7 @@ export default class Get extends Command {
       return log.error(`${sectionName} section not exists`);
     }
 
-    intro(`Section ${sectionName}`);
+    log.info(`Section ${sectionName}`);
     for (const product of products) {
       total += product.price;
       this.log(`- ${product.name} - ${product.price}€`);

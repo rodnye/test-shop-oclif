@@ -1,7 +1,9 @@
 import { Args, Command, Flags } from '@oclif/core'
-import { addProduct, getDatabase } from '../controllers/database.js'
+import { getDatabase } from '../controllers/database.js'
+import { addProduct } from "../controllers/product.js"
 import { log, text } from '@clack/prompts'
 import { parseWord } from '../utils/parse.js'
+import { validateProductName, validateProductPrice, validateSectionName } from '../validations/product.js'
 
 export default class Add extends Command {
   static override args = {
@@ -35,49 +37,52 @@ export default class Add extends Command {
       let symbol = await text({
         message: "Insert the name of product",
         placeholder: "apple",
-        validate: (input) => {
-          if(input.length < 3 || input.length > 20) {
-            return new Error("Ups! The product name must be between 3 and 20 characters.");
-          }
-        }
+        validate: validateProductName,
       });
       if(typeof symbol != "string") this.exit();
       product.name = parseWord(symbol);
-    
-    } else product.name = parseWord(args.product);
+    } 
+    else {
+      let invalid = validateProductName(
+        product.name = parseWord(args.product)
+      );
+      if (invalid) return log.error(invalid);
+    }
     
     // verify section
     if (!flags.section) {
       let symbol = await text({
         message: `Insert product section for \"${product.name}\"`,
         placeholder: "fruits",
-        validate: (input) => {
-          if(input.length < 3 || input.length > 20) {
-            return new Error("Ups! The section name must be between 3 and 20 characters.");
-          }
-        }
+        validate: validateSectionName,
       });
       if(typeof symbol != "string") this.exit();
       product.section = parseWord(symbol);
-    } else product.section = parseWord(flags.section);
+    } 
+    else {
+      let invalid = validateSectionName(
+        product.section = parseWord(flags.section)
+      );
+      if (invalid) return log.error(invalid);
+    }
     
     // verify price
     if (!flags.price) {
       let symbol = await text({
         message: `Insert the price of \"${product.name}\"`,
         placeholder: "73",
-        validate: (input) => {
-          let int = parseInt(input);
-          if (isNaN(int)) {
-            return new Error("Ups! Must be a number");
-          }
-          if (int < 0) return new Error("Ups! The price must be a positive number.");
-        }
+        validate: validateProductPrice,
       });
       if(typeof symbol != "string") this.exit();
       product.price = parseInt(symbol);
 
-    } else product.price = flags.price;
+    } 
+    else {
+      let invalid = validateProductPrice(
+        (product.price = flags.price) + ""
+      )
+      if (invalid) return log.error(invalid);
+    }
 
     await addProduct(product);
     await db.write();

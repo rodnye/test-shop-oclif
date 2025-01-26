@@ -1,5 +1,6 @@
 import { Args, Command, Flags } from '@oclif/core'
-import { getDatabase, getProduct, removeProduct } from '../../controllers/database.js'
+import { getDatabase } from '../../controllers/database.js'
+import { getProduct, removeProduct } from "../../controllers/product.js"
 import { confirm, log } from '@clack/prompts'
 
 export default class RemoveProduct extends Command {

@@ -1,5 +1,6 @@
 import { Args, Command, Flags } from '@oclif/core'
-import { getDatabase, getProducts, removeSection } from '../../controllers/database.js'
+import { getDatabase } from '../../controllers/database.js'
+import { getProducts, removeSection } from "../../controllers/product.js"
 import { confirm, log } from '@clack/prompts'
 import { parseWord } from '../../utils/parse.js'
 

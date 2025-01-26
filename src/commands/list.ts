@@ -4,19 +4,9 @@ import { intro, log, outro } from '@clack/prompts';
 
 export default class List extends Command {
   static override description = 'Get all section list'
-  static override aliases = ["l:ls"]
-
-  static override examples = [
-    '<%= config.bin %> <%= command.id %>',
-    '<%= config.bin %> <%= command.id %> --length',
-  ]
-
-  static override flags = {
-    length: Flags.boolean({ char: 'l' }),
-  }
+  static override aliases = ["ls"]
 
   public async run() {
-    const { flags } = await this.parse(List);
 
     const db = await getDatabase();
     const sectionsMap = {};
@@ -29,11 +19,14 @@ export default class List extends Command {
         sectionsMap[product.section] = 1;
       }
     }
+    
     intro("List of sections:");
+
     if (!Object.keys(sectionsMap).length) return log.warn("The database is empty.")
     for (const section in sectionsMap) {
-      log.info(`> ${section}: ${flags.length ? sectionsMap[section] + " products" : "<"}\n`);
+      log.info(`> ${section}: ${sectionsMap[section] + " products"}`);
     }
-    outro();
+    
+    outro("Total of products: " + db.data.products.length);
   }
 }
