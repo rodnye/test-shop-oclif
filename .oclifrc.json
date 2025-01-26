@@ -1,6 +1,6 @@
 {
-  "bin": "cli-test",
+  "bin": "./bin/run.js",
   "commands": "./dist/commands",
-  "dirname": "cli-test",
+  "dirname": "shopcli",
   "topicSeparator": " "
 }

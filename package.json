@@ -4,10 +4,10 @@
   "main": "src/index.js",
   "type": "module",
   "bin": {
-    "oclif-test": "./bin/run.js"
+    "shopcli": "./bin/run.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
