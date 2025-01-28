@@ -18,6 +18,12 @@ It's a product manager for a fictional store divided into sections.
 | `@clack/prompts` | CLI Prompts |  
 | `lowdb-js` | Json database manager  |
 
+## Screenshots
+
+<p align="center"> <img src="./.github/assets/img01.png" alt="Image 1" width="400"> </p>
+<p align="center"> <img src="./.github/assets/img02.png" alt="Image 2" width="400"> </p>
+<p align="center"> <img src="./.github/assets/img03.png" alt="Image 3" width="400"> </p>
+
 ## Usage
   <!-- usage -->
 ```sh-session
@@ -175,5 +181,5 @@ EXAMPLES
 
 ## Table of contents
   <!-- toc -->
-* [oclif practice](#oclif-practice)
+* [oclif practice](#shop-oclif-practice)
 <!-- tocstop -->
