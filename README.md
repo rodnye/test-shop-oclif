@@ -1,5 +1,14 @@
-# oclif practice
-A CLI wrote in NodeJS and Typescript for practice propouses.
+# shop oclif practice
+A CLI developed in NodeJS and Typescript for practical purposes.
+
+## Features
+It's a product manager for a fictional store divided into sections.
+- Get an add products to a section
+- List all sections
+- List all products in a section
+- Remove a product from a section
+- Remove a section
+- Some interactive menus
 
 ## Tecnologies
 
@@ -12,7 +21,11 @@ A CLI wrote in NodeJS and Typescript for practice propouses.
 ## Usage
   <!-- usage -->
 ```sh-session
-$ npm install -g oclif-test
+$ git clone https://github.com/rodnye/test-shop-oclif.git
+$ cd ./test-shop-oclif
+```
+
+```
 $ ./bin/run.js COMMAND
 running command...
 $ ./bin/run.js (--version)
@@ -32,6 +45,7 @@ USAGE
 * [`./bin/run.js ls`](#binrunjs-ls)
 * [`./bin/run.js remove product PRODUCT`](#binrunjs-remove-product-product)
 * [`./bin/run.js remove section SECTION`](#binrunjs-remove-section-section)
+
 
 ## `./bin/run.js add [PRODUCT]`
 
